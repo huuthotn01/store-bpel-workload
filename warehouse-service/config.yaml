@@ -1,0 +1,11 @@
+HTTP_PORT: 14081
+
+STAFF_SERVICE_HOST: staff-service
+STAFF_SERVICE_PORT: 14082
+
+MYSQL:
+  HOST: mysql
+  PORT: 3306
+  USERNAME: bpel
+  PASSWORD: 'bpel'
+  DATABASE: warehouse_service

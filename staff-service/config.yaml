@@ -1,0 +1,13 @@
+HTTP_PORT: 14082
+
+ACCOUNT_SERVICE_HOST: account-service
+ACCOUNT_SERVICE_PORT: 14083
+KAFKA_HOST: broker
+KAFKA_PORT: 29092
+
+MYSQL:
+  HOST: mysql
+  PORT: 3306
+  USERNAME: bpel
+  PASSWORD: 'bpel'
+  DATABASE: staff_service
