@@ -1,0 +1,13 @@
+HTTP_PORT: 14070
+
+GOODS_SERVICE_HOST: goods-service
+GOODS_SERVICE_PORT: 14080
+KAFKA_HOST: broker
+KAFKA_PORT: 29092
+
+MYSQL:
+  HOST: mysql
+  PORT: 3306
+  USERNAME: bpel
+  PASSWORD: 'bpel'
+  DATABASE: order_service

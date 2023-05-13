@@ -49,34 +49,40 @@ services:
       retries: 5
 
   admin-bff:
-    image: huuthotn01/admin-bff:20230506221241
+    image: huuthotn01/admin-bff:20230513024209
     container_name: admin-bff
     hostname: admin-bff
     networks:
       - store-bpel
+    volumes:
+      - ./admin-bff/config.yaml:/app/bff/admin-bff/config.yaml
     ports:
       - "10000:10000"
 
   customer-bff:
-    image: huuthotn01/customer-bff:20230506221332
+    image: huuthotn01/customer-bff:20230513032905
     container_name: customer-bff
     hostname: customer-bff
     networks:
       - store-bpel
+    volumes:
+      - ./customer-bff/config.yaml:/app/bff/customer-bff/config.yaml
     ports:
       - "20000:20000"
 
   shared-bff:
-    image: huuthotn01/shared-bff:20230506221418
+    image: huuthotn01/shared-bff:20230513033132
     container_name: shared-bff
     hostname: shared-bff
     networks:
       - store-bpel
+    volumes:
+      - ./shared-bff/config.yaml:/app/bff/shared-bff/config.yaml
     ports:
       - "30000:30000"
 
   account-service:
-    image: huuthotn01/account-service:20230506220735
+    image: huuthotn01/account-service:20230513042529
     container_name: account-service
     hostname: account-service
     depends_on:
@@ -85,11 +91,13 @@ services:
     restart: on-failure
     networks:
       - store-bpel
+    volumes:
+      - ./account-service/config.yaml:/app/account-service/config.yaml
     ports:
       - "14083:14083"
 
   account-service-db-migration:
-    image: huuthotn01/account-service-db-migration:20230506221109
+    image: huuthotn01/account-service-db-migration:20230513034025
     container_name: account-service-db-migration
     hostname: account-service-db-migration
     depends_on:
@@ -99,7 +107,7 @@ services:
       - store-bpel
 
   branch-service:
-    image: huuthotn01/branch-service:20230506221510
+    image: huuthotn01/branch-service:20230513175356
     container_name: branch-service
     hostname: branch-service
     depends_on:
@@ -108,11 +116,13 @@ services:
     restart: on-failure
     networks:
       - store-bpel
+    volumes:
+      - ./branch-service/config.yaml:/app/branch-service/config.yaml
     ports:
       - "14000:14000"
 
   branch-service-db-migration:
-    image: huuthotn01/branch-service-db-migration:20230506221559
+    image: huuthotn01/branch-service-db-migration:20230513034147
     container_name: branch-service-db-migration
     hostname: branch-service-db-migration
     depends_on:
@@ -122,7 +132,7 @@ services:
       - store-bpel
 
   cart-service:
-    image: huuthotn01/cart-service:20230506221720
+    image: huuthotn01/cart-service:20230513180039
     container_name: cart-service
     hostname: cart-service
     depends_on:
@@ -131,11 +141,13 @@ services:
     restart: on-failure
     networks:
       - store-bpel
+    volumes:
+      - ./cart-service/config.yaml:/app/cart-service/config.yaml
     ports:
       - "14061:14061"
 
   cart-service-db-migration:
-    image: huuthotn01/cart-service-db-migration:20230506221812
+    image: huuthotn01/cart-service-db-migration:20230513034301
     container_name: cart-service-db-migration
     hostname: cart-service-db-migration
     depends_on:
@@ -145,7 +157,7 @@ services:
       - store-bpel
 
   customer-service:
-    image: huuthotn01/customer-service:20230506221939
+    image: huuthotn01/customer-service:20230513180330
     container_name: customer-service
     hostname: customer-service
     depends_on:
@@ -154,11 +166,13 @@ services:
     restart: on-failure
     networks:
       - store-bpel
+    volumes:
+      - ./customer-service/config.yaml:/app/customer-service/config.yaml
     ports:
       - "14050:14050"
 
   customer-service-db-migration:
-    image: huuthotn01/customer-service-db-migration:20230506222033
+    image: huuthotn01/customer-service-db-migration:20230513034409
     container_name: customer-service-db-migration
     hostname: customer-service-db-migration
     depends_on:
@@ -168,7 +182,7 @@ services:
       - store-bpel
 
   event-service:
-    image: huuthotn01/event-service:20230506222144
+    image: huuthotn01/event-service:20230513180511
     container_name: event-service
     hostname: event-service
     depends_on:
@@ -177,14 +191,13 @@ services:
     restart: on-failure
     networks:
       - store-bpel
-#    configs:
-#      - source: event-service-config
-#        target: /app/event-service/config.yaml
+    volumes:
+      - ./event-service/config.yaml:/app/event-service/config.yaml
     ports:
       - "14060:14060"
 
   event-service-db-migration:
-    image: huuthotn01/event-service-db-migration:20230506222235
+    image: huuthotn01/event-service-db-migration:20230513042134
     container_name: event-service-db-migration
     hostname: event-service-db-migration
     depends_on:
@@ -194,7 +207,7 @@ services:
       - store-bpel
 
   goods-service:
-    image: huuthotn01/goods-service:20230506222352
+    image: huuthotn01/goods-service:20230513180746
     container_name: goods-service
     hostname: goods-service
     depends_on:
@@ -203,11 +216,13 @@ services:
     restart: on-failure
     networks:
       - store-bpel
+    volumes:
+      - ./goods-service/config.yaml:/app/goods-service/config.yaml
     ports:
       - "14080:14080"
 
   goods-service-db-migration:
-    image: huuthotn01/goods-service-db-migration:20230506222446
+    image: huuthotn01/goods-service-db-migration:20230513034635
     container_name: goods-service-db-migration
     hostname: goods-service-db-migration
     depends_on:
@@ -217,7 +232,7 @@ services:
       - store-bpel
 
   order-service:
-    image: huuthotn01/order-service:20230506222600
+    image: huuthotn01/order-service:20230513181004
     container_name: order-service
     hostname: order-service
     depends_on:
@@ -226,11 +241,13 @@ services:
     restart: on-failure
     networks:
       - store-bpel
+    volumes:
+      - ./order-service/config.yaml:/app/order-service/config.yaml
     ports:
       - "14070:14070"
 
   order-service-db-migration:
-    image: huuthotn01/order-service-db-migration:20230506222658
+    image: huuthotn01/order-service-db-migration:20230513034529
     container_name: order-service-db-migration
     hostname: order-service-db-migration
     depends_on:
@@ -240,7 +257,7 @@ services:
       - store-bpel
 
   staff-service:
-    image: huuthotn01/staff-service:20230506222822
+    image: huuthotn01/staff-service:20230513181216
     container_name: staff-service
     hostname: staff-service
     depends_on:
@@ -249,11 +266,13 @@ services:
     restart: on-failure
     networks:
       - store-bpel
+    volumes:
+      - ./staff-service/config.yaml:/app/staff-service/config.yaml
     ports:
       - "14082:14082"
 
   staff-service-db-migration:
-    image: huuthotn01/staff-service-db-migration:20230506222910
+    image: huuthotn01/staff-service-db-migration:20230513034746
     container_name: staff-service-db-migration
     hostname: staff-service-db-migration
     depends_on:
@@ -263,7 +282,7 @@ services:
       - store-bpel
 
   statistic-service:
-    image: huuthotn01/statistic-service:20230506223021
+    image: huuthotn01/statistic-service:20230513181359
     container_name: statistic-service
     hostname: statistic-service
     depends_on:
@@ -272,11 +291,13 @@ services:
     restart: on-failure
     networks:
       - store-bpel
+    volumes:
+      - ./statistic-service/config.yaml:/app/statistic-service/config.yaml
     ports:
       - "14090:14090"
 
   statistic-service-db-migration:
-    image: huuthotn01/statistic-service-db-migration:20230506223112
+    image: huuthotn01/statistic-service-db-migration:20230513034904
     container_name: statistic-service-db-migration
     hostname: statistic-service-db-migration
     depends_on:
@@ -286,7 +307,7 @@ services:
       - store-bpel
 
   warehouse-service:
-    image: huuthotn01/warehouse-service:20230506223231
+    image: huuthotn01/warehouse-service:20230513181545
     container_name: warehouse-service
     hostname: warehouse-service
     depends_on:
@@ -295,11 +316,13 @@ services:
     restart: on-failure
     networks:
       - store-bpel
+    volumes:
+      - ./warehouse-service/config.yaml:/app/warehouse-service/config.yaml
     ports:
       - "14081:14081"
 
   warehouse-service-db-migration:
-    image: huuthotn01/warehouse-service-db-migration:20230506223322
+    image: huuthotn01/warehouse-service-db-migration:20230513035016
     container_name: warehouse-service-db-migration
     hostname: warehouse-service-db-migration
     depends_on:
@@ -312,7 +335,3 @@ networks:
   store-bpel:
     name: store-bpel
     driver: bridge
-
-#configs:
-#  event-service-config:
-#    file: ./event_service/config.yaml

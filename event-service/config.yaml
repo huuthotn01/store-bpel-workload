@@ -1,0 +1,8 @@
+HTTP_PORT: 14060
+
+MYSQL:
+  HOST: mysql
+  PORT: 3306
+  USERNAME: bpel
+  PASSWORD: 'bpel'
+  DATABASE: event_service

@@ -1,0 +1,11 @@
+HTTP_PORT: 14000
+
+KAFKA_HOST: broker
+KAFKA_PORT: 29092
+
+MYSQL:
+  HOST: mysql
+  PORT: 3306
+  USERNAME: bpel
+  PASSWORD: 'bpel'
+  DATABASE: branch_service
