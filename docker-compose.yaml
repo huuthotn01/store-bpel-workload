@@ -67,9 +67,6 @@ services:
     image: huuthotn01/account-service:20230513042529
     container_name: account-service
     hostname: account-service
-    depends_on:
-      mysql:
-        condition: service_healthy
     restart: on-failure
     networks:
       - store-bpel
@@ -92,9 +89,6 @@ services:
     image: huuthotn01/branch-service:20230513175356
     container_name: branch-service
     hostname: branch-service
-    depends_on:
-      mysql:
-        condition: service_healthy
     restart: on-failure
     networks:
       - store-bpel
@@ -117,9 +111,6 @@ services:
     image: huuthotn01/cart-service:20230513180039
     container_name: cart-service
     hostname: cart-service
-    depends_on:
-      mysql:
-        condition: service_healthy
     restart: on-failure
     networks:
       - store-bpel
@@ -142,9 +133,6 @@ services:
     image: huuthotn01/customer-service:20230513180330
     container_name: customer-service
     hostname: customer-service
-    depends_on:
-      mysql:
-        condition: service_healthy
     restart: on-failure
     networks:
       - store-bpel
@@ -167,9 +155,6 @@ services:
     image: huuthotn01/event-service:20230513180511
     container_name: event-service
     hostname: event-service
-    depends_on:
-      mysql:
-        condition: service_healthy
     restart: on-failure
     networks:
       - store-bpel
@@ -192,9 +177,6 @@ services:
     image: huuthotn01/goods-service:20230513180746
     container_name: goods-service
     hostname: goods-service
-    depends_on:
-      mysql:
-        condition: service_healthy
     restart: on-failure
     networks:
       - store-bpel
@@ -217,9 +199,6 @@ services:
     image: huuthotn01/order-service:20230513181004
     container_name: order-service
     hostname: order-service
-    depends_on:
-      mysql:
-        condition: service_healthy
     restart: on-failure
     networks:
       - store-bpel
@@ -242,9 +221,6 @@ services:
     image: huuthotn01/staff-service:20230513181216
     container_name: staff-service
     hostname: staff-service
-    depends_on:
-      mysql:
-        condition: service_healthy
     restart: on-failure
     networks:
       - store-bpel
@@ -267,9 +243,6 @@ services:
     image: huuthotn01/statistic-service:20230513181359
     container_name: statistic-service
     hostname: statistic-service
-    depends_on:
-      mysql:
-        condition: service_healthy
     restart: on-failure
     networks:
       - store-bpel
@@ -292,9 +265,6 @@ services:
     image: huuthotn01/warehouse-service:20230513181545
     container_name: warehouse-service
     hostname: warehouse-service
-    depends_on:
-      mysql:
-        condition: service_healthy
     restart: on-failure
     networks:
       - store-bpel
