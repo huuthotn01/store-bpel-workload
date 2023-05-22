@@ -1,63 +1,34 @@
 version: "3.7"
 
 services:
-  zookeeper:
-    image: confluentinc/cp-zookeeper:7.3.2
-    container_name: zookeeper
-    networks:
-      - store-bpel
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-
-  broker:
-    image: confluentinc/cp-kafka:7.3.2
-    container_name: kafka
-    hostname: kafka
-    networks:
-      - store-bpel
-    ports:
-      - "9092:9092"
-      - "29092:29092"
-    depends_on:
-      - zookeeper
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://broker:29092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
-      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-
-  mysql:
-    image: mysql:8.0.32
-    container_name: mysql
-    hostname: mysql
-    networks:
-      - store-bpel
-    volumes:
-      - ./init_db:/docker-entrypoint-initdb.d
-    environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=1
-    ports:
-      - "3306:3306"
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root"]
-      interval: 20s
-      timeout: 5s
-      retries: 5
-
-  frontend:
-    image: huuthotn01/store-fe:20230513231800
-    container_name: frontend
-    hostname: frontend
-    networks:
-      - store-bpel
-    volumes:
-      - ./frontend/.env:/app/.env
-    ports:
-      - "3000:3000"
+#  zookeeper:
+#    image: confluentinc/cp-zookeeper:7.3.2
+#    container_name: zookeeper
+#    networks:
+#      - store-bpel
+#    environment:
+#      ZOOKEEPER_CLIENT_PORT: 2181
+#      ZOOKEEPER_TICK_TIME: 2000
+#
+#  broker:
+#    image: confluentinc/cp-kafka:7.3.2
+#    container_name: kafka
+#    hostname: kafka
+#    networks:
+#      - store-bpel
+#    ports:
+#      - "9092:9092"
+#      - "29092:29092"
+#    depends_on:
+#      - zookeeper
+#    environment:
+#      KAFKA_BROKER_ID: 1
+#      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+#      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+#      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://broker:29092
+#      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+#      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+#      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
 
   admin-bff:
     image: huuthotn01/admin-bff:20230513024209
@@ -107,15 +78,15 @@ services:
     ports:
       - "14083:14083"
 
-  account-service-db-migration:
-    image: huuthotn01/account-service-db-migration:20230513034025
-    container_name: account-service-db-migration
-    hostname: account-service-db-migration
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - store-bpel
+#  account-service-db-migration:
+#    image: huuthotn01/account-service-db-migration:20230513034025
+#    container_name: account-service-db-migration
+#    hostname: account-service-db-migration
+#    depends_on:
+#      mysql:
+#        condition: service_healthy
+#    networks:
+#      - store-bpel
 
   branch-service:
     image: huuthotn01/branch-service:20230513175356
@@ -132,15 +103,15 @@ services:
     ports:
       - "14000:14000"
 
-  branch-service-db-migration:
-    image: huuthotn01/branch-service-db-migration:20230513034147
-    container_name: branch-service-db-migration
-    hostname: branch-service-db-migration
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - store-bpel
+#  branch-service-db-migration:
+#    image: huuthotn01/branch-service-db-migration:20230513034147
+#    container_name: branch-service-db-migration
+#    hostname: branch-service-db-migration
+#    depends_on:
+#      mysql:
+#        condition: service_healthy
+#    networks:
+#      - store-bpel
 
   cart-service:
     image: huuthotn01/cart-service:20230513180039
@@ -157,15 +128,15 @@ services:
     ports:
       - "14061:14061"
 
-  cart-service-db-migration:
-    image: huuthotn01/cart-service-db-migration:20230513034301
-    container_name: cart-service-db-migration
-    hostname: cart-service-db-migration
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - store-bpel
+#  cart-service-db-migration:
+#    image: huuthotn01/cart-service-db-migration:20230513034301
+#    container_name: cart-service-db-migration
+#    hostname: cart-service-db-migration
+#    depends_on:
+#      mysql:
+#        condition: service_healthy
+#    networks:
+#      - store-bpel
 
   customer-service:
     image: huuthotn01/customer-service:20230513180330
@@ -182,15 +153,15 @@ services:
     ports:
       - "14050:14050"
 
-  customer-service-db-migration:
-    image: huuthotn01/customer-service-db-migration:20230513034409
-    container_name: customer-service-db-migration
-    hostname: customer-service-db-migration
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - store-bpel
+#  customer-service-db-migration:
+#    image: huuthotn01/customer-service-db-migration:20230513034409
+#    container_name: customer-service-db-migration
+#    hostname: customer-service-db-migration
+#    depends_on:
+#      mysql:
+#        condition: service_healthy
+#    networks:
+#      - store-bpel
 
   event-service:
     image: huuthotn01/event-service:20230513180511
@@ -207,15 +178,15 @@ services:
     ports:
       - "14060:14060"
 
-  event-service-db-migration:
-    image: huuthotn01/event-service-db-migration:20230513042134
-    container_name: event-service-db-migration
-    hostname: event-service-db-migration
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - store-bpel
+#  event-service-db-migration:
+#    image: huuthotn01/event-service-db-migration:20230513042134
+#    container_name: event-service-db-migration
+#    hostname: event-service-db-migration
+#    depends_on:
+#      mysql:
+#        condition: service_healthy
+#    networks:
+#      - store-bpel
 
   goods-service:
     image: huuthotn01/goods-service:20230513180746
@@ -232,15 +203,15 @@ services:
     ports:
       - "14080:14080"
 
-  goods-service-db-migration:
-    image: huuthotn01/goods-service-db-migration:20230513034635
-    container_name: goods-service-db-migration
-    hostname: goods-service-db-migration
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - store-bpel
+#  goods-service-db-migration:
+#    image: huuthotn01/goods-service-db-migration:20230513034635
+#    container_name: goods-service-db-migration
+#    hostname: goods-service-db-migration
+#    depends_on:
+#      mysql:
+#        condition: service_healthy
+#    networks:
+#      - store-bpel
 
   order-service:
     image: huuthotn01/order-service:20230513181004
@@ -257,15 +228,15 @@ services:
     ports:
       - "14070:14070"
 
-  order-service-db-migration:
-    image: huuthotn01/order-service-db-migration:20230513034529
-    container_name: order-service-db-migration
-    hostname: order-service-db-migration
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - store-bpel
+#  order-service-db-migration:
+#    image: huuthotn01/order-service-db-migration:20230513034529
+#    container_name: order-service-db-migration
+#    hostname: order-service-db-migration
+#    depends_on:
+#      mysql:
+#        condition: service_healthy
+#    networks:
+#      - store-bpel
 
   staff-service:
     image: huuthotn01/staff-service:20230513181216
@@ -282,15 +253,15 @@ services:
     ports:
       - "14082:14082"
 
-  staff-service-db-migration:
-    image: huuthotn01/staff-service-db-migration:20230513034746
-    container_name: staff-service-db-migration
-    hostname: staff-service-db-migration
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - store-bpel
+#  staff-service-db-migration:
+#    image: huuthotn01/staff-service-db-migration:20230513034746
+#    container_name: staff-service-db-migration
+#    hostname: staff-service-db-migration
+#    depends_on:
+#      mysql:
+#        condition: service_healthy
+#    networks:
+#      - store-bpel
 
   statistic-service:
     image: huuthotn01/statistic-service:20230513181359
@@ -307,15 +278,15 @@ services:
     ports:
       - "14090:14090"
 
-  statistic-service-db-migration:
-    image: huuthotn01/statistic-service-db-migration:20230513034904
-    container_name: statistic-service-db-migration
-    hostname: statistic-service-db-migration
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - store-bpel
+#  statistic-service-db-migration:
+#    image: huuthotn01/statistic-service-db-migration:20230513034904
+#    container_name: statistic-service-db-migration
+#    hostname: statistic-service-db-migration
+#    depends_on:
+#      mysql:
+#        condition: service_healthy
+#    networks:
+#      - store-bpel
 
   warehouse-service:
     image: huuthotn01/warehouse-service:20230513181545
@@ -332,15 +303,15 @@ services:
     ports:
       - "14081:14081"
 
-  warehouse-service-db-migration:
-    image: huuthotn01/warehouse-service-db-migration:20230513035016
-    container_name: warehouse-service-db-migration
-    hostname: warehouse-service-db-migration
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - store-bpel
+#  warehouse-service-db-migration:
+#    image: huuthotn01/warehouse-service-db-migration:20230513035016
+#    container_name: warehouse-service-db-migration
+#    hostname: warehouse-service-db-migration
+#    depends_on:
+#      mysql:
+#        condition: service_healthy
+#    networks:
+#      - store-bpel
 
 networks:
   store-bpel:

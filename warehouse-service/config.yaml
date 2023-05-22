@@ -4,8 +4,8 @@ STAFF_SERVICE_HOST: staff-service
 STAFF_SERVICE_PORT: 14082
 
 MYSQL:
-  HOST: mysql
+  HOST: warehouse-service.c1wzjnxoqy5g.ap-southeast-1.rds.amazonaws.com
   PORT: 3306
-  USERNAME: bpel
-  PASSWORD: 'bpel'
+  USERNAME: admin
+  PASSWORD: 'admin-bpel'
   DATABASE: warehouse_service
