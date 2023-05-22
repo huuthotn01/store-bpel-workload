@@ -8,8 +8,8 @@ ORDER_SERVICE_HOST: order-service
 ORDER_SERVICE_PORT: 14070
 
 MYSQL:
-  HOST: mysql
+  HOST: goods-service.c1wzjnxoqy5g.ap-southeast-1.rds.amazonaws.com
   PORT: 3306
-  USERNAME: bpel
-  PASSWORD: 'bpel'
+  USERNAME: admin
+  PASSWORD: 'admin-bpel'
   DATABASE: goods_service
