@@ -6,8 +6,8 @@ KAFKA_HOST: broker
 KAFKA_PORT: 29092
 
 MYSQL:
-  HOST: cart-service.c1wzjnxoqy5g.ap-southeast-1.rds.amazonaws.com
+  HOST: 34.105.93.68
   PORT: 3306
-  USERNAME: admin
+  USERNAME: root
   PASSWORD: 'admin-bpel'
   DATABASE: cart_service
