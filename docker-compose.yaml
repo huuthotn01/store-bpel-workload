@@ -102,7 +102,7 @@ services:
       - "14061:14061"
 
   customer-service:
-    image: huuthotn01/customer-service:20230513180330
+    image: huuthotn01/customer-service:20230530211302
     container_name: customer-service
     hostname: customer-service
     restart: on-failure
@@ -126,7 +126,7 @@ services:
       - "14060:14060"
 
   goods-service:
-    image: huuthotn01/goods-service:20230513180746
+    image: huuthotn01/goods-service:20230530211702
     container_name: goods-service
     hostname: goods-service
     restart: on-failure
