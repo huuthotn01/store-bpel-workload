@@ -37,7 +37,7 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
 
   admin-bff:
-    image: huuthotn01/admin-bff:20230513024209
+    image: huuthotn01/admin-bff:20230531051748
     container_name: admin-bff
     hostname: admin-bff
     networks:
@@ -48,7 +48,7 @@ services:
       - "10000:10000"
 
   customer-bff:
-    image: huuthotn01/customer-bff:20230513032905
+    image: huuthotn01/customer-bff:20230531051748
     container_name: customer-bff
     hostname: customer-bff
     networks:
@@ -59,7 +59,7 @@ services:
       - "20000:20000"
 
   shared-bff:
-    image: huuthotn01/shared-bff:20230513033132
+    image: huuthotn01/shared-bff:20230531051748
     container_name: shared-bff
     hostname: shared-bff
     networks:
@@ -70,7 +70,7 @@ services:
       - "30000:30000"
 
   account-service:
-    image: huuthotn01/account-service:20230513042529
+    image: huuthotn01/account-service:20230531051748
     container_name: account-service
     hostname: account-service
     restart: on-failure
@@ -82,7 +82,7 @@ services:
       - "14083:14083"
 
   branch-service:
-    image: huuthotn01/branch-service:20230513175356
+    image: huuthotn01/branch-service:20230531051748
     container_name: branch-service
     hostname: branch-service
     restart: on-failure
@@ -94,7 +94,7 @@ services:
       - "14000:14000"
 
   cart-service:
-    image: huuthotn01/cart-service:20230513180039
+    image: huuthotn01/cart-service:20230531051748
     container_name: cart-service
     hostname: cart-service
     restart: on-failure
@@ -106,7 +106,7 @@ services:
       - "14061:14061"
 
   customer-service:
-    image: huuthotn01/customer-service:20230530211302
+    image: huuthotn01/customer-service:20230531051748
     container_name: customer-service
     hostname: customer-service
     restart: on-failure
@@ -118,7 +118,7 @@ services:
       - "14050:14050"
 
   event-service:
-    image: huuthotn01/event-service:20230513180511
+    image: huuthotn01/event-service:20230531051748
     container_name: event-service
     hostname: event-service
     restart: on-failure
@@ -130,7 +130,7 @@ services:
       - "14060:14060"
 
   goods-service:
-    image: huuthotn01/goods-service:20230530211702
+    image: huuthotn01/goods-service:20230531051748
     container_name: goods-service
     hostname: goods-service
     restart: on-failure
@@ -142,7 +142,7 @@ services:
       - "14080:14080"
 
   order-service:
-    image: huuthotn01/order-service:20230513181004
+    image: huuthotn01/order-service:20230531051748
     container_name: order-service
     hostname: order-service
     restart: on-failure
@@ -154,7 +154,7 @@ services:
       - "14070:14070"
 
   staff-service:
-    image: huuthotn01/staff-service:20230513181216
+    image: huuthotn01/staff-service:20230531051748
     container_name: staff-service
     hostname: staff-service
     restart: on-failure
@@ -166,7 +166,7 @@ services:
       - "14082:14082"
 
   statistic-service:
-    image: huuthotn01/statistic-service:20230513181359
+    image: huuthotn01/statistic-service:20230531051748
     container_name: statistic-service
     hostname: statistic-service
     restart: on-failure
@@ -178,7 +178,7 @@ services:
       - "14090:14090"
 
   warehouse-service:
-    image: huuthotn01/warehouse-service:20230513181545
+    image: huuthotn01/warehouse-service:20230531051748
     container_name: warehouse-service
     hostname: warehouse-service
     restart: on-failure
